@@ -53,7 +53,6 @@ int main() {
             case 1:
                 if(indice<TAM){
                     for(int i=indice;i<TAM;i++){
-                        
                             produto[i].codigo=i+1;
                             printf("Código produto: %d - Informe o nome do produto:\n",produto[i].codigo);
                             lerString(produto[i].nome,sizeof(produto[i].nome));
