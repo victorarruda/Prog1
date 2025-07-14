@@ -36,43 +36,48 @@ int main() {
     char buffer[50];
     int opcao,indice=0;
     struct Produtos produto[TAM];
-    printf("1 - Cadastrar produto. \n");
-    printf("2 - Listar produtos. \n");
-    printf("3 - Efetuar pedido. \n");
-    printf("4 - Listar pedidos. \n");
-    opcao = lerInteiro();
-    switch(opcao){
-        case 1:
-            for(int i=indice;i<TAM;i++){
-                //if(indice<TAM){
-                    produto[i].codigo=i+1;
-                    printf("Código produto: %d - Informe o nome do produto:\n",produto[i].codigo);
-                    lerString(produto[i].nome,sizeof(produto[i].nome));
+    do{
+        printf("1 - Cadastrar produto. \n");
+        printf("2 - Listar produtos. \n");
+        printf("3 - Efetuar pedido. \n");
+        printf("4 - Listar pedidos. \n");
+        printf("9 - Sair\n\n");
+        printf("Informe uma opção: ");
+        opcao = lerInteiro();
+        switch(opcao){
+            case 1:
+                for(int i=indice;i<TAM;i++){
+                    //if(indice<TAM){
+                        produto[i].codigo=i+1;
+                        printf("Código produto: %d - Informe o nome do produto:\n",produto[i].codigo);
+                        lerString(produto[i].nome,sizeof(produto[i].nome));
 
-                    printf("Informe a quantidade do produto:\n");
-                    produto[i].quantidade=lerInteiro();
+                        printf("Informe a quantidade do produto:\n");
+                        produto[i].quantidade=lerInteiro();
 
-                    printf("Informe o preço do produto:\n");
-                    produto[i].preco=lerFloat();
-                    indice++;
-                //}
-            }
-        break;
-        case 2:
-            for(int i=0;i<indice;i++){
-                printf("Código produto: %d \n Nome do produto: %s \n Quantidade: %d \n Preço: %.2f\n",produto[i].codigo,produto[i].nome,produto[i].quantidade,produto[i].preco);
-            }
-            getchar();
-        break;
-        case 3:
-            printf("a");
-        break;
-        case 4:
-            printf("a");
-        break;
-        default:
-            printf("Informe uma opção valida.\n");
-    }
+                        printf("Informe o preço do produto:\n");
+                        produto[i].preco=lerFloat();
+                        indice++;
+                    //}
+                }
+            break;
+            case 2:
+                for(int i=0;i<indice;i++){
+                    printf("Código produto: %d \n Nome do produto: %s \n Quantidade: %d \n Preço: %.2f\n",produto[i].codigo,produto[i].nome,produto[i].quantidade,produto[i].preco);
+                }
+                getchar();
+            break;
+            case 3:
+                printf("a");
+            break;
+            case 9:
+                printf("saindo...");
+            break;
+            default:
+                printf("Informe uma opção valida.\n");
+                getchar();
+        }
+    }while(opcao!=9);
 
 
     return 0;
