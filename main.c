@@ -51,22 +51,25 @@ int main() {
         opcao = lerInteiro();
         switch(opcao){
             case 1:
-                for(int i=indice;i<TAM;i++){
-                    if(indice<TAM){
-                        produto[i].codigo=i+1;
-                        printf("Código produto: %d - Informe o nome do produto:\n",produto[i].codigo);
-                        lerString(produto[i].nome,sizeof(produto[i].nome));
+                if(indice<TAM){
+                    for(int i=indice;i<TAM;i++){
+                        
+                            produto[i].codigo=i+1;
+                            printf("Código produto: %d - Informe o nome do produto:\n",produto[i].codigo);
+                            lerString(produto[i].nome,sizeof(produto[i].nome));
 
-                        printf("Informe a quantidade do produto:\n");
-                        produto[i].quantidade=lerInteiro();
+                            printf("Informe a quantidade do produto:\n");
+                            produto[i].quantidade=lerInteiro();
 
-                        printf("Informe o preço do produto:\n");
-                        produto[i].preco=lerFloat();
-                        indice++;
-                    }else{
-                        printf("O sistema já chegou ao limite de cadastros.\n");
+                            printf("Informe o preço do produto:\n");
+                            produto[i].preco=lerFloat();
+                            indice++;
                     }
-                }
+                } 
+                else{
+                        printf("O sistema já chegou ao limite de cadastros.\n\n");
+                        getchar();
+                    }
             break;
             case 2:
                 for(int i=0;i<indice;i++){
