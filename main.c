@@ -11,10 +11,15 @@ int lerInteiro(){
     return valor;
 }
 
-int lerFloat(){
+float lerFloat(){
     char buffer[50];
     float valor;
     fgets(buffer,sizeof(buffer),stdin);
+    for(int i=0;buffer[i] !='\0';i++){
+        if (buffer[i]==','){
+            buffer[i]='.';
+        }
+    }
     sscanf(buffer,"%f",&valor);
     return valor;
 }
@@ -47,7 +52,7 @@ int main() {
         switch(opcao){
             case 1:
                 for(int i=indice;i<TAM;i++){
-                    //if(indice<TAM){
+                    if(indice<TAM){
                         produto[i].codigo=i+1;
                         printf("Código produto: %d - Informe o nome do produto:\n",produto[i].codigo);
                         lerString(produto[i].nome,sizeof(produto[i].nome));
@@ -58,7 +63,9 @@ int main() {
                         printf("Informe o preço do produto:\n");
                         produto[i].preco=lerFloat();
                         indice++;
-                    //}
+                    }else{
+                        printf("O sistema já chegou ao limite de cadastros.\n");
+                    }
                 }
             break;
             case 2:
